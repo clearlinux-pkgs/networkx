@@ -4,7 +4,7 @@
 #
 Name     : networkx
 Version  : 1.10
-Release  : 12
+Release  : 13
 URL      : https://pypi.python.org/packages/source/n/networkx/networkx-1.10.tar.gz
 Source0  : https://pypi.python.org/packages/source/n/networkx/networkx-1.10.tar.gz
 Summary  : Python package for creating and manipulating graphs and networks
