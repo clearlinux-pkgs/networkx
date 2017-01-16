@@ -4,15 +4,15 @@
 #
 Name     : networkx
 Version  : 1.11
-Release  : 21
+Release  : 22
 URL      : https://pypi.python.org/packages/source/n/networkx/networkx-1.11.tar.gz
 Source0  : https://pypi.python.org/packages/source/n/networkx/networkx-1.11.tar.gz
 Summary  : Python package for creating and manipulating graphs and networks
 Group    : Development/Tools
-License  : BSD-2-Clause
+License  : BSD-2-Clause BSD-3-Clause
 Requires: networkx-python
 Requires: networkx-data
-BuildRequires : decorator-python
+BuildRequires : decorator
 BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -37,7 +37,6 @@ data components for the networkx package.
 %package python
 Summary: python components for the networkx package.
 Group: Default
-Requires: decorator-python
 
 %description python
 python components for the networkx package.
@@ -47,6 +46,8 @@ python components for the networkx package.
 %setup -q -n networkx-1.11
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484554501
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -56,9 +57,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1484554501
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
