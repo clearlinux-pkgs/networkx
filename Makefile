@@ -1,5 +1,5 @@
 PKG_NAME := networkx
-URL := https://pypi.python.org/packages/source/n/networkx/networkx-1.11.tar.gz
+URL := https://pypi.debian.net/networkx/networkx-2.0.zip
 
 
 include ../common/Makefile.common
