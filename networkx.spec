@@ -4,7 +4,7 @@
 #
 Name     : networkx
 Version  : 2.1
-Release  : 31
+Release  : 32
 URL      : https://pypi.debian.net/networkx/networkx-2.1.zip
 Source0  : https://pypi.debian.net/networkx/networkx-2.1.zip
 Summary  : Python package for creating and manipulating graphs and networks
@@ -46,7 +46,6 @@ legacypython components for the networkx package.
 %package python
 Summary: python components for the networkx package.
 Group: Default
-Requires: networkx-legacypython
 Requires: networkx-python3
 
 %description python
@@ -70,12 +69,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517630129
+export SOURCE_DATE_EPOCH=1517685769
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1517630129
+export SOURCE_DATE_EPOCH=1517685769
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
