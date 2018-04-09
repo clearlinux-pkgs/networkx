@@ -4,17 +4,23 @@
 #
 Name     : networkx
 Version  : 2.1
-Release  : 32
+Release  : 33
 URL      : https://pypi.debian.net/networkx/networkx-2.1.zip
 Source0  : https://pypi.debian.net/networkx/networkx-2.1.zip
 Summary  : Python package for creating and manipulating graphs and networks
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: networkx-legacypython
 Requires: networkx-python3
-Requires: networkx-data
+Requires: networkx-doc
 Requires: networkx-python
 Requires: decorator
+Requires: gdal
+Requires: lxml
+Requires: matplotlib
+Requires: numpy
+Requires: pandas
+Requires: pydot
+Requires: scipy
 BuildRequires : decorator
 BuildRequires : pbr
 BuildRequires : pip
@@ -26,21 +32,12 @@ BuildRequires : setuptools
 NetworkX is a Python package for the creation, manipulation, and
         study of the structure, dynamics, and functions of complex networks.
 
-%package data
-Summary: data components for the networkx package.
-Group: Data
+%package doc
+Summary: doc components for the networkx package.
+Group: Documentation
 
-%description data
-data components for the networkx package.
-
-
-%package legacypython
-Summary: legacypython components for the networkx package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the networkx package.
+%description doc
+doc components for the networkx package.
 
 
 %package python
@@ -69,15 +66,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517685769
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523292644
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1517685769
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -85,7 +79,7 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files data
+%files doc
 %defattr(-,root,root,-)
 /usr/share/doc/networkx-2.1/LICENSE.txt
 /usr/share/doc/networkx-2.1/examples/3d_drawing/__pycache__/mayavi2_spring.cpython-36.pyc
@@ -196,10 +190,6 @@ echo ----[ mark ]----
 /usr/share/doc/networkx-2.1/examples/subclass/plot_antigraph.py
 /usr/share/doc/networkx-2.1/examples/subclass/plot_printgraph.py
 /usr/share/doc/networkx-2.1/requirements.txt
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
