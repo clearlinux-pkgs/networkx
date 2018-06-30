@@ -4,14 +4,14 @@
 #
 Name     : networkx
 Version  : 2.1
-Release  : 38
+Release  : 39
 URL      : https://pypi.debian.net/networkx/networkx-2.1.zip
 Source0  : https://pypi.debian.net/networkx/networkx-2.1.zip
 Summary  : Python package for creating and manipulating graphs and networks
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: networkx-python3
-Requires: networkx-doc
+Requires: networkx-license
 Requires: networkx-python
 Requires: decorator
 Requires: gdal
@@ -24,7 +24,6 @@ Requires: scipy
 BuildRequires : decorator
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -38,6 +37,14 @@ Group: Documentation
 
 %description doc
 doc components for the networkx package.
+
+
+%package license
+Summary: license components for the networkx package.
+Group: Default
+
+%description license
+license components for the networkx package.
 
 
 %package python
@@ -66,11 +73,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523292644
+export SOURCE_DATE_EPOCH=1530377067
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/networkx
+cp LICENSE.txt %{buildroot}/usr/share/doc/networkx/LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -80,54 +89,53 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files doc
-%defattr(-,root,root,-)
-/usr/share/doc/networkx-2.1/LICENSE.txt
-/usr/share/doc/networkx-2.1/examples/3d_drawing/__pycache__/mayavi2_spring.cpython-36.pyc
+%defattr(0644,root,root,0755)
+/usr/share/doc/networkx-2.1/examples/3d_drawing/__pycache__/mayavi2_spring.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/3d_drawing/mayavi2_spring.py
-/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/iterated_dynamical_systems.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_eigenvalues.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_heavy_metal_umlaut.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_parallel_betweenness.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/iterated_dynamical_systems.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_eigenvalues.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_heavy_metal_umlaut.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/advanced/__pycache__/plot_parallel_betweenness.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/advanced/iterated_dynamical_systems.py
 /usr/share/doc/networkx-2.1/examples/advanced/plot_eigenvalues.py
 /usr/share/doc/networkx-2.1/examples/advanced/plot_heavy_metal_umlaut.py
 /usr/share/doc/networkx-2.1/examples/advanced/plot_parallel_betweenness.py
-/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/beam_search.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_blockmodel.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_davis_club.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_krackhardt_centrality.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/rcm.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/beam_search.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_blockmodel.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_davis_club.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/plot_krackhardt_centrality.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/algorithms/__pycache__/rcm.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/algorithms/beam_search.py
 /usr/share/doc/networkx-2.1/examples/algorithms/hartford_drug.edgelist
 /usr/share/doc/networkx-2.1/examples/algorithms/plot_blockmodel.py
 /usr/share/doc/networkx-2.1/examples/algorithms/plot_davis_club.py
 /usr/share/doc/networkx-2.1/examples/algorithms/plot_krackhardt_centrality.py
 /usr/share/doc/networkx-2.1/examples/algorithms/rcm.py
-/usr/share/doc/networkx-2.1/examples/basic/__pycache__/plot_properties.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/basic/__pycache__/plot_read_write.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/basic/__pycache__/plot_properties.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/basic/__pycache__/plot_read_write.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/basic/plot_properties.py
 /usr/share/doc/networkx-2.1/examples/basic/plot_read_write.py
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_atlas.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_chess_masters.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_circular_tree.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_degree_histogram.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_degree_rank.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_directed.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_edge_colormap.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_ego_graph.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_four_grids.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_giant_component.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_house_with_colors.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_knuth_miles.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_labels_and_colors.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_lanl_routes.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_node_colormap.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_random_geometric_graph.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_sampson.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_simple_path.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_spectral_grid.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_unix_email.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_weighted_graph.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_atlas.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_chess_masters.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_circular_tree.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_degree_histogram.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_degree_rank.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_directed.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_edge_colormap.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_ego_graph.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_four_grids.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_giant_component.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_house_with_colors.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_knuth_miles.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_labels_and_colors.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_lanl_routes.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_node_colormap.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_random_geometric_graph.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_sampson.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_simple_path.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_spectral_grid.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_unix_email.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/drawing/__pycache__/plot_weighted_graph.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/drawing/chess_masters_WCC.pgn.bz2
 /usr/share/doc/networkx-2.1/examples/drawing/knuth_miles.txt.gz
 /usr/share/doc/networkx-2.1/examples/drawing/lanl_routes.edgelist
@@ -153,15 +161,15 @@ echo ----[ mark ]----
 /usr/share/doc/networkx-2.1/examples/drawing/plot_unix_email.py
 /usr/share/doc/networkx-2.1/examples/drawing/plot_weighted_graph.py
 /usr/share/doc/networkx-2.1/examples/drawing/unix_email.mbox
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/atlas2.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/expected_degree_sequence.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_degree_sequence.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_erdos_renyi.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_football.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_karate_club.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_napoleon_russian_campaign.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_roget.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/graph/__pycache__/words.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/atlas2.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/expected_degree_sequence.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_degree_sequence.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_erdos_renyi.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_football.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_karate_club.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_napoleon_russian_campaign.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/plot_roget.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/graph/__pycache__/words.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/graph/atlas2.py
 /usr/share/doc/networkx-2.1/examples/graph/expected_degree_sequence.py
 /usr/share/doc/networkx-2.1/examples/graph/plot_degree_sequence.py
@@ -173,23 +181,28 @@ echo ----[ mark ]----
 /usr/share/doc/networkx-2.1/examples/graph/roget_dat.txt.gz
 /usr/share/doc/networkx-2.1/examples/graph/words.py
 /usr/share/doc/networkx-2.1/examples/graph/words_dat.txt.gz
-/usr/share/doc/networkx-2.1/examples/javascript/__pycache__/force.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/javascript/__pycache__/force.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/javascript/force.py
-/usr/share/doc/networkx-2.1/examples/jit/__pycache__/plot_rgraph.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/jit/__pycache__/plot_rgraph.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/jit/plot_rgraph.py
-/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_attributes.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_draw.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_simple.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/write_dotfile.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_attributes.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_draw.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/pygraphviz_simple.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/pygraphviz/__pycache__/write_dotfile.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/pygraphviz/pygraphviz_attributes.py
 /usr/share/doc/networkx-2.1/examples/pygraphviz/pygraphviz_draw.py
 /usr/share/doc/networkx-2.1/examples/pygraphviz/pygraphviz_simple.py
 /usr/share/doc/networkx-2.1/examples/pygraphviz/write_dotfile.py
-/usr/share/doc/networkx-2.1/examples/subclass/__pycache__/plot_antigraph.cpython-36.pyc
-/usr/share/doc/networkx-2.1/examples/subclass/__pycache__/plot_printgraph.cpython-36.pyc
+/usr/share/doc/networkx-2.1/examples/subclass/__pycache__/plot_antigraph.cpython-37.pyc
+/usr/share/doc/networkx-2.1/examples/subclass/__pycache__/plot_printgraph.cpython-37.pyc
 /usr/share/doc/networkx-2.1/examples/subclass/plot_antigraph.py
 /usr/share/doc/networkx-2.1/examples/subclass/plot_printgraph.py
 /usr/share/doc/networkx-2.1/requirements.txt
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/networkx-2.1/LICENSE.txt
+/usr/share/doc/networkx/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
