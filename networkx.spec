@@ -4,7 +4,7 @@
 #
 Name     : networkx
 Version  : 2.1
-Release  : 37
+Release  : 38
 URL      : https://pypi.debian.net/networkx/networkx-2.1.zip
 Source0  : https://pypi.debian.net/networkx/networkx-2.1.zip
 Summary  : Python package for creating and manipulating graphs and networks
