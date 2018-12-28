@@ -4,7 +4,7 @@
 #
 Name     : networkx
 Version  : 2.2
-Release  : 44
+Release  : 45
 URL      : https://files.pythonhosted.org/packages/f3/f4/7e20ef40b118478191cec0b58c3192f822cace858c19505c7670961b76b2/networkx-2.2.zip
 Source0  : https://files.pythonhosted.org/packages/f3/f4/7e20ef40b118478191cec0b58c3192f822cace858c19505c7670961b76b2/networkx-2.2.zip
 Summary  : Python package for creating and manipulating graphs and networks
