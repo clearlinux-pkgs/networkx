@@ -1,5 +1,5 @@
 PKG_NAME := networkx
-URL = https://files.pythonhosted.org/packages/f3/f4/7e20ef40b118478191cec0b58c3192f822cace858c19505c7670961b76b2/networkx-2.2.zip
+URL = https://files.pythonhosted.org/packages/85/08/f20aef11d4c343b557e5de6b9548761811eb16e438cee3d32b1c66c8566b/networkx-2.3.zip
 ARCHIVES = 
 
 include ../common/Makefile.common
