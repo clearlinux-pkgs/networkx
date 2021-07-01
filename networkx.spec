@@ -4,7 +4,7 @@
 #
 Name     : networkx
 Version  : 2.5.1
-Release  : 63
+Release  : 64
 URL      : https://files.pythonhosted.org/packages/b0/21/adfbf6168631e28577e4af9eb9f26d75fe72b2bb1d33762a5f2c425e6c2a/networkx-2.5.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b0/21/adfbf6168631e28577e4af9eb9f26d75fe72b2bb1d33762a5f2c425e6c2a/networkx-2.5.1.tar.gz
 Summary  : Python package for creating and manipulating graphs and networks
